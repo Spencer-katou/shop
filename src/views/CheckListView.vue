@@ -14,6 +14,8 @@ export default {
   },
   mounted() {
     this.getStorage();
+    console.log(this.choosePay);
+    
   },
   methods: {
     // 取得Storage的購物清單資料
@@ -110,21 +112,21 @@ export default {
           付款方式
         </h6>
         <div class="form-check pb-3">
-          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" v-model="choo">
+          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" v-model="choosePay" value="信用卡付款">
           <label class="form-check-label" for="flexRadioDefault1">
             信用卡付款
           </label>
         </div>
         <div class="border-top border-success border-2 pt-3 opacity-25"></div>
         <div class="form-check pb-3">
-          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked value="網路ATM" v-model="choosePay">
           <label class="form-check-label" for="flexRadioDefault2">
             網路ATM
           </label>
         </div>
         <div class="border-top border-success border-2 pt-3 opacity-25"></div>
         <div class="form-check pb-3">
-          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" checked>
+          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" checked value="超商代碼" v-model="choosePay">
           <label class="form-check-label" for="flexRadioDefault3">
             超商代碼
           </label>

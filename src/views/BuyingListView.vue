@@ -2,18 +2,20 @@
 import { RouterLink, RouterView } from 'vue-router'
 import { totalPrice } from '@/composable/useCount.js';
 import { totalCount } from '@/composable/sumCount.js';
+import { ShoppingCartStore } from '@/stores/shoppingCart.js';
 
-import ApplePie from '@/assets/imgea/apple-pie.jpg'
-import BerryPie from '@/assets/imgea/berrypie.jpg'
-import Tiramisu from '@/assets/imgea/Tiramisu.jpg'
-import CountBtn from '@/components/Button/CountBtn.vue'
+import ApplePie from '@/assets/imgea/apple-pie.jpg';
+import BerryPie from '@/assets/imgea/berrypie.jpg';
+import Tiramisu from '@/assets/imgea/Tiramisu.jpg';
+import CountBtn from '@/components/Button/CountBtn.vue';
 
 export default {
   components: {
     CountBtn
   },
   setup() {
-    return { totalPrice, totalCount };
+    const ShoppingCartStore = useShoppingCartStore()
+    return { totalPrice, totalCount, ShoppingCartStore };
   },
   data() {
     return {
@@ -49,7 +51,7 @@ export default {
     setStorage() {
       sessionStorage.setItem('shopping-list', JSON.stringify(this.shopList));
       sessionStorage.setItem('total-price', JSON.stringify(this.totalPrice(this.shopList)));
-    sessionStorage.setItem('total-count', JSON.stringify(this.totalCount(this.shopList)));
+      sessionStorage.setItem('total-count', JSON.stringify(this.totalCount(this.shopList)));
     },
   },
 }
